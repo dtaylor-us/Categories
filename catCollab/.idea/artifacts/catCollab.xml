@@ -1,13 +1,13 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="catCollab:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/catCollab_war_exploded</output-path>
-    <root id="root">
-      <element id="javaee-facet-resources" facet="catCollab/web/Web" />
+  <artifact type="war" name="catCollab">
+    <output-path>$PROJECT_DIR$/out/artifacts/catCollab</output-path>
+    <root id="archive" name="catCollab.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="catCollab" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="catCollab/web/Web" />
     </root>
   </artifact>
 </component>

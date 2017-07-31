@@ -1,16 +1,19 @@
 package com.catCollab.console;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Main {
 
-    public static void main(String[] args) {
-        DBConnection();
+    public static void main(String[] args) throws URISyntaxException, SQLException{
+//        localDBConnection();
+        prodDBConnection();
     }
 
-    private static Connection DBConnection() {
+    private static Connection localDBConnection() {
         String dbHost = "localhost";
         String dbName = "catCollab";
         String dbUser = "root";
@@ -42,5 +45,15 @@ public class Main {
             System.out.println("Connection failed!");
             return null;
         }
+    }
+
+    private static Connection prodDBConnection() throws URISyntaxException, SQLException{
+        URI dbUri = new URI("mysql://be5a5f924b1322:9766bc85@us-cdbr-iron-east-03.cleardb.net/heroku_4e22acf2c863394?reconnect=true");
+
+        String username = dbUri.getUserInfo().split(":")[0];
+        String password = dbUri.getUserInfo().split(":")[1];
+        String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
+
+        return DriverManager.getConnection(dbUrl, username, password);
     }
 }

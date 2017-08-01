@@ -5,7 +5,7 @@ import java.sql.*;
 public class Main {
 
     public static void main(String[] args) throws URISyntaxException, SQLException{
-//        localDBConnection();
+        localDBConnection();
 //        execQuery();
 //        prodDBConnection();
     }
@@ -29,7 +29,7 @@ public class Main {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":3306/" + dbName + "?useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
+            connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":2424/" + dbName + "?useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
         } catch (SQLException ex) {
             System.out.println("Connection failed!" + ex);
             return null;

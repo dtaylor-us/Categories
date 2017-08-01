@@ -1,0 +1,13 @@
+
+mysql:
+  restart: always
+  image: mysql:latest
+  environment:
+   - MYSQL_ROOT_PASSWORD=password
+   - MYSQL_DATABASE=catCollab
+  expose:
+    - "3306"
+  ports:
+    - "2424:3306"
+
+

@@ -21,7 +21,7 @@ public class User extends HttpServlet {
             String sql = "SELECT userName FROM user";
             ResultSet rs = st.executeQuery(sql);
 
-            while(rs.next()) {
+            while (rs.next()) {
                 userName = rs.getString(1);
             }
             conn.close();
@@ -30,8 +30,9 @@ public class User extends HttpServlet {
             System.out.println("CAUGHT SQL: " + sqlEx);
         }
 
-
+        userName = userName != null ? userName : "user";
         request.setAttribute("userName", userName);
+
         request.getRequestDispatcher("./user.jsp").forward(request, response);
     }
 

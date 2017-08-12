@@ -7,10 +7,10 @@ import java.sql.SQLException;
 public class DBConnector {
 
     public static Connection getConnection() {
-        String dbHost = "localhost";
-        String dbName = "catCollab";
-        String dbUser = "root";
-        String dbPass = "password";
+        String dbHost = "us-cdbr-iron-east-03.cleardb.net";
+        String dbName = "heroku_4e22acf2c863394";
+        String dbUser = "be5a5f924b1322";
+        String dbPass = "9766bc85";
         String useSSL = "false";
         String procBod = "true";
 
@@ -25,7 +25,7 @@ public class DBConnector {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":2424/" + dbName + "?useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
+            connection = DriverManager.getConnection("jdbc:mysql://" + dbHost + ":3306/" + dbName + "?useSSL=" + useSSL + "&noAccessToProcedureBodies=" + procBod, dbUser, dbPass);
         } catch (SQLException ex) {
             System.out.println("Connection failed!" + ex);
             return null;

@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f2ce2a72-0cb3-40d4-a1a7-587e98843d2c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/catcollab.war" afterPath="$PROJECT_DIR$/target/catcollab.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/catcollab/WEB-INF/classes/main/msyql/DBConnector.class" afterPath="$PROJECT_DIR$/target/catcollab/WEB-INF/classes/main/msyql/DBConnector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/catcollab/WEB-INF/classes/main/servlet/User.class" afterPath="$PROJECT_DIR$/target/catcollab/WEB-INF/classes/main/servlet/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main/msyql/DBConnector.class" afterPath="$PROJECT_DIR$/target/classes/main/msyql/DBConnector.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/main/servlet/User.class" afterPath="$PROJECT_DIR$/target/classes/main/servlet/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/msyql/DBConnector.java" afterPath="$PROJECT_DIR$/src/main/msyql/DBConnector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/servlet/User.java" afterPath="$PROJECT_DIR$/src/main/servlet/User.java" />
-    </list>
+    <list default="true" id="f2ce2a72-0cb3-40d4-a1a7-587e98843d2c" name="Default" comment="" />
     <ignored path="catcollab.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1123,12 +1111,12 @@
       <workItem from="1502505094597" duration="2066000" />
       <workItem from="1502507193788" duration="67000" />
       <workItem from="1502507284697" duration="108000" />
-      <workItem from="1502507422679" duration="4346000" />
+      <workItem from="1502507422679" duration="4881000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6587000" />
+    <option name="totallyTimeSpent" value="7122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1054" extended-state="6" />

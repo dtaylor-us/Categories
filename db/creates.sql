@@ -2,6 +2,7 @@ CREATE TABLE user (
 	userID INT NOT NULL AUTO_INCREMENT,
     userName VARCHAR(50), 
     emailAddress VARCHAR(80),
+    imageID INT,
     psalt BINARY(64),
     password CHAR(40),
     dateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,

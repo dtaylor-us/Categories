@@ -3,14 +3,15 @@ package main.msyql;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Map;
 
 public class DBConnector {
 
     public static Connection getConnection() {
-        String dbHost = "us-cdbr-iron-east-03.cleardb.net";
-        String dbName = "heroku_4e22acf2c863394";
-        String dbUser = "be5a5f924b1322";
-        String dbPass = "9766bc85";
+        String dbHost = System.getenv().get("DB_HOST");
+        String dbName = System.getenv().get("DB_NAME");
+        String dbUser = System.getenv().get("DB_USER");
+        String dbPass = System.getenv().get("DB_PASSWORD");
         String useSSL = "false";
         String procBod = "true";
 

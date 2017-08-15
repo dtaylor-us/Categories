@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="catcollab:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="catcollab.war">
-      <element id="artifact" artifact-name="catcollab:war exploded" />
-    </root>
-  </artifact>
-</component>

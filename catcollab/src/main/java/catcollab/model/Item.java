@@ -26,17 +26,22 @@ public class Item {
     Item() { // jpa only
     }
 
-    public Item(Category category, String name, String description) {
+    public Item(Account account, Category category, String name, String description) {
         this.name = name;
         this.description = description;
+        this.account = account;
         this.category = category;
     }
 
-    public String name;
-    public String description;
+    private String name;
+    private String description;
 
     public Category getCategory() {
         return category;
+    }
+
+    public Account getAccount() {
+        return account;
     }
 
     public Long getId() {

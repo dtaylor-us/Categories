@@ -4,3 +4,4 @@ Task #2: You should see dtaylo56 when you visit the following link
 
 # Dev - Note:
 heroku git:remote -a MyHerokuAppName
+heroku config | grep CLEARDB_DATABASE_URL | sed 's/^.*: //'

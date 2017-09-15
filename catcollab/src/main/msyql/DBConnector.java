@@ -40,15 +40,4 @@ public class DBConnector {
             return null;
         }
     }
-
-//  TODO: REFACTOR TU USE THIS DB CONNECTION
-//    private static Connection prodDBConnection() throws URISyntaxException, SQLException{
-//        URI dbUri = new URI("mysql://be5a5f924b1322:9766bc85@us-cdbr-iron-east-03.cleardb.net/heroku_4e22acf2c863394?reconnect=true");
-//
-//        String username = dbUri.getUserInfo().split(":")[0];
-//        String password = dbUri.getUserInfo().split(":")[1];
-//        String dbUrl = "jdbc:mysql://" + dbUri.getHost() + dbUri.getPath();
-//
-//        return DriverManager.getConnection(dbUrl, username, password);
-//    }
 }

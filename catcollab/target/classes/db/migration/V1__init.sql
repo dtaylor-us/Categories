@@ -1,6 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS db_catcollab;
-USE db_catcollab;
-
 DROP TABLE IF EXISTS user;
 CREATE TABLE user (
 	userID INT NOT NULL AUTO_INCREMENT,

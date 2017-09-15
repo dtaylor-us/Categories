@@ -9,6 +9,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.43" />
           <element id="library" level="project" name="Maven: org.jasypt:jasypt:1.9.2" />
+          <element id="library" level="project" name="Maven: org.codehaus.groovy:groovy-all:2.3.9" />
         </element>
       </element>
       <element id="directory" name="META-INF">

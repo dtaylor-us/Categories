@@ -1,4 +1,4 @@
-package main.msyql;
+package msyql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

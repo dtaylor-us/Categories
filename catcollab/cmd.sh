@@ -1,7 +1,9 @@
 #!/bin/bash
 
-ENV_NAME=frozen-coast-81302
+ENV_NAME=$(heroku info -s | grep git_url | sed 's#.\+\.com/\(.\+\)\.git$#\1#g')
 WAR_PATH=target/catcollab-1.0-SNAPSHOT.war
+
+export DATABASE_URL=$(heroku config | grep CLEARDB_DATABASE_URL | sed 's/^.*: //')
 
 clean() {
     mvn clean
@@ -20,22 +22,7 @@ deploy_war() {
 }
 
 migrate_schema() {
-    clear
-    echo Please enter the JDBC MySQL url:
-    read url
-    export MIGRATION_DATABASE_URL=$url
-    clear
-
-    echo Username:
-    read user
-    export MIGRATION_DATABASE_USERNAME=$user
-    clear
-
-    echo Password:
-    read -s password
-    export MIGRATION_DATABASE_PASSWORD=$password
-    clear
-    mvn flyway:migrate
+    mvn initialize flyway:migrate
 }
  
 case $1 in

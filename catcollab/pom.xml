@@ -31,25 +31,73 @@
             <artifactId>jasypt</artifactId>
             <version>1.9.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.3.9</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>4.2.0</version>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.2</version>
+                <executions>
+                    <execution>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <url>${env.MIGRATION_DATABASE_URL}</url>
-                    <user>${env.MIGRATION_DATABASE_USERNAME}</user>
-                    <password>${env.MIGRATION_DATABASE_PASSWORD}</password>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>5.1.43</version>
-                    </dependency>
-                </dependencies>
+                    <scripts>
+                    <script><![CDATA[
+                        def env_url = System.getenv("DATABASE_URL")
+                        println "ENV_URL: ${env_url}"
+
+                        URI dbUri = new URI(env_url);
+                        println "DB URI: ${dbUri}"
+
+                        def username = dbUri.getUserInfo().split(":")[0];
+                        println "ENV_USER: ${username}"
+
+                        def password = dbUri.getUserInfo().split(":")[1];
+                        println "PASSWORD ${password}"
+
+                        def port = dbUri.getPort()
+                        port = port < 0 ? "" : ":${port}";
+                        println "PORT ${port}"
+
+                        def dbUrl = "jdbc:mysql://${dbUri.getHost()}${port}${dbUri.getPath()}";
+                        println "RESULT_URL: ${dbUrl}"
+
+                        project.properties['flyway.url'] = dbUrl
+                        project.properties['flyway.user']=username
+                        project.properties['flyway.password']=password
+                        ]]></script>
+                    </scripts>
+                    </configuration>
+            </plugin>
+            <plugin>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>flyway-maven-plugin</artifactId>
+                    <version>4.2.0</version>
+                    <!--<configuration>
+                        <url>${database.jdbcUrl}</url>
+                        <user>${database.username}</user>
+                        <password>${database.password}</password>
+                        <echo>${project.properties}</echo>
+                    </configuration>-->
+                    <dependencies>
+                        <dependency>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <version>5.1.43</version>
+                        </dependency>
+                    </dependencies>
             </plugin>
         </plugins>
     </build>

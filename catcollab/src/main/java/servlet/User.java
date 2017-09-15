@@ -1,4 +1,4 @@
-package main.servlet;
+package servlet;
 
 import main.msyql.DBConnector;
 

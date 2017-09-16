@@ -7,7 +7,7 @@
     <!--BEGIN REGISTER SERVLET-->
     <servlet>
         <servlet-name>Register</servlet-name>
-        <servlet-class>main.servlet.Register</servlet-class>
+        <servlet-class>servlet.Register</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
@@ -18,7 +18,7 @@
     <!--BEGIN USER SERVLET-->
     <servlet>
         <servlet-name>User</servlet-name>
-        <servlet-class>main.servlet.User</servlet-class>
+        <servlet-class>servlet.User</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>

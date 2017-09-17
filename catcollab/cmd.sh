@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export DATABASE_URL=$(heroku config | grep CLEARDB_DATABASE_URL | sed 's/^.*: //')
-export APP_NAME=$(heroku apps:info -s  | grep web_url | cut -d= -f2 | awk -F/ '{print $3}')
+export HEROKU_URL=$(heroku apps:info -s  | grep web_url | cut -d= -f2)
 
 clean() {
     clear
@@ -30,7 +30,7 @@ install() {
 deploy_war() {
     clear
     echo "**********************************************************************************************************"
-    echo "     APP CONFIG FILE: Deploying war to $APP_NAME..."
+    echo "     APP CONFIG FILE: Deploying war to $HEROKU_URL..."
     echo "**********************************************************************************************************"
     mvn heroku:deploy-war
 }

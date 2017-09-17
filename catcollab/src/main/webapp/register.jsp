@@ -3,12 +3,10 @@
 <html>
 <body>
 <form action="register" method="post">
-
     Name:<input type="text" name="userName"/><br/>
     Password:<input type="password" name="password"/><br/>
     Email Id:<input type="text" name="email" /><br/>
-    <input type="submit" value="Submit"/>
-
+    <input type="submit" value="register"/>
 </form>
 </body>
 </html>

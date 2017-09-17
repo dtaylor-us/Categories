@@ -11,30 +11,24 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class Register extends HttpServlet {
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response){
-        DBConnector.getConnection();
-    }
+public class RegisterServlet extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        String n = request.getParameter("userName");
-        String p = request.getParameter("password");
-        String e = request.getParameter("emailAddress");
-
-
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String email = request.getParameter("emailAddress");
 
         try {
             Connection con = DBConnector.getConnection();
             PreparedStatement ps = con.prepareStatement("insert into user values(?,?,?)");
 
-            ps.setString(1, n);
-            ps.setString(2, p);
-            ps.setString(3, e);
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            ps.setString(3, email);
 
             int i = ps.executeUpdate();
             if (i > 0)

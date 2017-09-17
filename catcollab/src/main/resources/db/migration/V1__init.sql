@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS user;
+
 CREATE TABLE user (
 	userID INT NOT NULL AUTO_INCREMENT,
     userName VARCHAR(50), 
@@ -9,7 +9,6 @@ CREATE TABLE user (
     PRIMARY KEY (userID)
 );
 
-DROP TABLE IF EXISTS category;
 CREATE TABLE category (
 	categoryID INT NOT NULL AUTO_INCREMENT,
     imageID INT,
@@ -18,7 +17,6 @@ CREATE TABLE category (
     PRIMARY KEY (categoryID)
 );
 
-DROP TABLE IF EXISTS userCategory;
 CREATE TABLE userCategory (
     userID INT NOT NULL,
     categoryID INT NOT NULL,
@@ -27,7 +25,6 @@ CREATE TABLE userCategory (
     CONSTRAINT fk_userCategory_category FOREIGN KEY (categoryID) REFERENCES category (categoryID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS item;
 CREATE TABLE item (
 	itemID INT NOT NULL AUTO_INCREMENT,
     imageID INT,
@@ -37,7 +34,6 @@ CREATE TABLE item (
     PRIMARY KEY (itemID)
 );
 
-DROP TABLE IF EXISTS image;
 CREATE TABLE image (
 	imageID INT NOT NULL AUTO_INCREMENT,
 	caption VARCHAR(45) NOT NULL,
@@ -45,7 +41,6 @@ CREATE TABLE image (
     PRIMARY KEY (imageID)
 );
 
-DROP TABLE IF EXISTS categoryItem;
 CREATE TABLE categoryItem (
     categoryID INT NOT NULL,
     itemID INT NOT NULL,

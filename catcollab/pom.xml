@@ -68,7 +68,7 @@
                     <execution>
                         <phase>initialize</phase>
                         <goals>
-                            <!--<goal>execute</goal>-->
+                            <goal>execute</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -106,12 +106,11 @@
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.2.0</version>
-                <!--<configuration>
-                    <url>${database.jdbcUrl}</url>
-                    <user>${database.username}</user>
-                    <password>${database.password}</password>
-                    <echo>${project.properties}</echo>
-                </configuration>-->
+                <configuration>
+                    <!--<url>jdbc:mysql://localhost:2424/catCollab</url>-->
+                    <!--<user>root</user>-->
+                    <!--<password>password</password>-->
+                </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>mysql</groupId>

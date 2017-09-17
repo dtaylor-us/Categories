@@ -55,7 +55,6 @@
                 <configuration>
                     <url>http://localhost:8080/manager/text</url>
                     <username>admin</username>
-                    <path>/</path>
                     <password>password</password>
                     <server>TomcatServer</server>
                 </configuration>

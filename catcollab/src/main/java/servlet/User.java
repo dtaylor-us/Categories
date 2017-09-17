@@ -7,15 +7,33 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.*;
+import java.net.URISyntaxException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class User extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = null;
 
-        Connection conn = DBConnector.getConnection();
+        try {
+            Connection conn = DBConnector.getConnection();
+            userName = getUserName(userName, conn);
+        } catch (URISyntaxException ex) {
+            System.out.println("URI provided has an error in it's syntax.");
+        }
+
+        request.setAttribute("userName", setUserResponse(userName));
+        request.getRequestDispatcher("./user.jsp").forward(request, response);
+    }
+
+    private String setUserResponse(String userName) {
+        return userName != null ? userName : "user not found";
+    }
+
+    private String getUserName(String userName, Connection conn) {
         try {
             Statement st = conn.createStatement();
             String sql = "SELECT userName FROM user";
@@ -29,11 +47,7 @@ public class User extends HttpServlet {
         } catch (SQLException sqlEx) {
             System.out.println("CAUGHT SQL: " + sqlEx);
         }
-
-        userName = userName != null ? userName : "user";
-        request.setAttribute("userName", userName);
-
-        request.getRequestDispatcher("./user.jsp").forward(request, response);
+        return userName;
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

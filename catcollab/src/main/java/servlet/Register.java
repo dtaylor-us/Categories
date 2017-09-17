@@ -8,13 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class Register extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response){
-        DBConnector.getConnection();
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            Connection conn = DBConnector.getConnection();
+        } catch (URISyntaxException ex) {
+            System.out.println("URI provided has an error in it's syntax.");
+        }
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +30,6 @@ public class Register extends HttpServlet {
         String n = request.getParameter("userName");
         String p = request.getParameter("password");
         String e = request.getParameter("emailAddress");
-
 
 
         try {

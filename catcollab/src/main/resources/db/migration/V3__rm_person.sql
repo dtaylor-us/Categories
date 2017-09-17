@@ -1,1 +1,0 @@
-DROP TABLE Person;

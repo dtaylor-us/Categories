@@ -38,17 +38,16 @@ public class LoginServlet extends HttpServlet {
         boolean st = false;
         try {
 
-            //loading drivers for mysql
             Class.forName("com.mysql.jdbc.Driver");
 
-            //creating connection with the database
-            Connection con = DBConnector.getConnection();
-            PreparedStatement ps = con.prepareStatement
+            Connection conn = DBConnector.getConnection();
+            PreparedStatement ps = conn.prepareStatement
                     ("select * from user where emailAddress=? and password=?");
             ps.setString(1, email);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             st = rs.next();
+            conn.close();
 
         } catch (Exception e) {
             e.printStackTrace();

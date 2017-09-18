@@ -28,8 +28,8 @@ public class RegisterServlet extends HttpServlet {
 
 
         try {
-            Connection con = DBConnector.getConnection();
-            PreparedStatement ps = con.prepareStatement("INSERT INTO user(userName, emailAddress, password) VALUES(?,?,?);");
+            Connection conn = DBConnector.getConnection();
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO user(userName, emailAddress, password) VALUES(?,?,?);");
 
             ps.setString(1, userName);
             ps.setString(2, email);
@@ -38,6 +38,7 @@ public class RegisterServlet extends HttpServlet {
             int i = ps.executeUpdate();
             if (i > 0)
                 out.print("You have successfully registered...");
+            conn.close();
 
         } catch (Exception e2) {
             System.out.println(e2);

@@ -1,4 +1,4 @@
-package msyql;
+package db;
 
 import model.User;
 

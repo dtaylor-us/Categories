@@ -1,4 +1,4 @@
-package msyql;
+package db.msyql;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,37 +10,23 @@ public class DBConnector {
 
     public static Connection getConnection() throws URISyntaxException {
         String herokuURL = System.getenv("DATABASE_URL");
-        System.out.println("HEROKU URL: " + herokuURL);
-
         URI dbUri = new URI(herokuURL);
-        System.out.println("DB URI: " + dbUri);
-
         String dbUser = dbUri.getUserInfo().split(":")[0];
-        System.out.println("DB USERNAME: " + dbUser);
-
         String dbPassword = dbUri.getUserInfo().split(":")[1];
-        boolean passInd = (dbPassword != null || !"".equals(dbPassword));
-        System.out.println("DB PASSWORD: " + passInd);
-
-
-        String port = "";
-        if (dbUri.getPort() > 0) {
-            port = ":" + String.valueOf(dbUri.getPort());
-            System.out.println("PORT #: " + port);
-        } else {
-            System.out.println("PORT #: " + "no port provided");
-        }
-
+        String port = getPortFromURI(dbUri);
         String dbHost = dbUri.getHost();
-        System.out.println("HOST: " + dbHost);
-
-
         String path = dbUri.getPath();
-        System.out.println("PATH: " + path);
-
-
         String url = "jdbc:mysql://" + dbHost + port + path;
-        System.out.println("TEST-ME: " + url);
+
+        //region PRINT DB CREDENTIALS
+//        System.out.println("HEROKU URL: " + herokuURL);
+//        System.out.println("DB URI: " + dbUri);
+//        System.out.println("DB USERNAME: " + dbUser);
+//        System.out.println("DB PASSWORD: " + passInd);
+//        System.out.println("HOST: " + dbHost);
+//        System.out.println("PATH: " + path);
+//        System.out.println("TEST-ME: " + url);
+//end region
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -50,7 +36,7 @@ public class DBConnector {
         }
 
         System.out.println("MySQL Driver Registered");
-        Connection connection = null;
+        Connection connection;
 
         try {
             connection = DriverManager.getConnection(url, dbUser, dbPassword);
@@ -58,7 +44,6 @@ public class DBConnector {
             System.out.println("Connection failed!" + ex);
             return null;
         }
-
         if (connection != null) {
             System.out.println("Successfully connected to MySQL database");
             return connection;
@@ -66,5 +51,15 @@ public class DBConnector {
             System.out.println("Connection failed!");
             return null;
         }
+    }
+
+    private static String getPortFromURI(URI dbUri) {
+        if (dbUri.getPort() > 0) {
+            return ":" + String.valueOf(dbUri.getPort());
+        } else {
+            System.out.println("PORT #: " + "no port provided");
+            return "";
+        }
+
     }
 }

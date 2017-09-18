@@ -1,6 +1,6 @@
 package servlet;
 
-import msyql.DBConnector;
+import db.msyql.DBConnector;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
